@@ -52,7 +52,7 @@ public class Main {
                     } else if (opcao.equalsIgnoreCase("l")) {
                         listarCadastrosDiretores();
                     } else if (opcao.equalsIgnoreCase("s")) {
-                        executeCadastroFilmes = false;
+                        executeCadastroDiretor = false;
                     } else {
                         System.out.println("\nOpção inválida!\n");
                     }

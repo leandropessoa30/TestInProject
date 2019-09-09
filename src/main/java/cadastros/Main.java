@@ -11,7 +11,7 @@ public class Main {
     private boolean executeCadastroDiretor;
     private boolean executePrincipal;
     private List<Filmes> cadastroFilmes;
-    private List<Diretores> cadastroDiretor;
+    private List<Diretores> cadastroDiretores;
 
     public static void main(String[] args) {
         new Main();
@@ -23,7 +23,7 @@ public class Main {
         executeCadastroDiretor = true;
         executeCadastroFilmes = true;
         cadastroFilmes = new ArrayList<Filmes>();
-        //cadastroDiretor = new ArrayList<ListaDiretor>();
+        cadastroDiretores = new ArrayList<Diretores>();
 
         System.out.println("*SISTEMA PARA CADASTRO DE FILMES E DIRETORES***\n");
         while (executePrincipal) {
@@ -73,8 +73,8 @@ public class Main {
 
     private String menuPricipal() {
         System.out.println("Informe uma opção:");
-        System.out.println("F - Cadastrar Filmes");
-        System.out.println("D - Cadastrar Diretor");
+        System.out.println("F - Cadastrar e listar Filmes");
+        System.out.println("D - Cadastrar e listar Diretores");
         System.out.println("S - Sair");
         return l.nextLine();
 
@@ -120,6 +120,7 @@ public class Main {
                 cadastrando = false;
             } else if (continua.equalsIgnoreCase("s")) {
                 // se for s sai do if e volta para o inicio do while
+                cadastrando = true;
             } else {
                 System.out.println("\nOpção inválida! \n");
                 cadastrando = false;
@@ -154,7 +155,7 @@ public class Main {
             String cadastrar = textInput("Deseja adicionar o diretor ao cadastro (S/N) ?");
             if (cadastrar.equalsIgnoreCase("s")) {
                 System.out.println("Diretor cadastrado!");
-                cadastroDiretor.add(cad);
+                cadastroDiretores.add(cad);
             } else if (cadastrar.equalsIgnoreCase("n")) {
                 System.out.println("Cadastro cancelado !!!");
             } else {
@@ -166,6 +167,7 @@ public class Main {
                 cadastrando = false;
             } else if (continua.equalsIgnoreCase("s")) {
                 // se for s sai do if e volta para o inicio do while
+                cadastrando = true;
             } else {
                 System.out.println("\nOpção inválida! \n");
                 cadastrando = false;
@@ -174,13 +176,13 @@ public class Main {
     }
 
     private void listarCadastrosDiretores() {
-        if (cadastroDiretor.size() == 0) {
+        if (cadastroDiretores.size() == 0) {
             System.out.println("\nNão existem diretores cadastrados !!!\n");
         } else {
             System.out.println("\nLista de diretores cadastrados\n");
-            for (int i = 0; i < cadastroDiretor.size(); i++) {
-                Diretores cad = cadastroDiretor.get(i);
-                System.out.println("Filme número: " + i);
+            for (int i = 0; i < cadastroDiretores.size(); i++) {
+                Diretores cad = cadastroDiretores.get(i);
+                System.out.println("Diretor número: " + i);
                 System.out.println("\tNome: " + cad.getNome());
                 System.out.println("\tAno de Nascimento: " + cad.getAnoNascimeento());
             }

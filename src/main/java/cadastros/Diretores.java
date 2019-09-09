@@ -5,22 +5,20 @@ public class Diretores {
 
     private String anoNascimeento;
 
-    private String login;
-
     public Diretores() {
 
     }
 
     public String getNome() {
+
         return nome;
     }
 
-    public String getAnoNascimeento(){
+    public String getAnoNascimeento() {
         return anoNascimeento;
     }
 
     public void setNome(String name) {
-
         nome = name;
     }
 

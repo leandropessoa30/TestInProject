@@ -2,30 +2,44 @@ package cadastros;
 
 public class Filmes {
 
-    private String nome;
-
+    private String nomeFilme;
+    private String nomeDiretor;
     private String anoLancamento;
+    private String anoNascimento;
 
-    private String login;
 
     public Filmes() {
-
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeFilme() {
+        return nomeFilme;
     }
 
-    public String getAnoLancamento(){
+    public String getNomeDiretor() {
+        return nomeDiretor;
+    }
+
+    public String getAnoLancamento() {
         return anoLancamento;
     }
 
-    public void setNome(String name) {
+    public String getAnoNascimento() {
+        return anoNascimento;
+    }
 
-        nome = name;
+    public void setNomeFilme(String nameFilme) {
+        nomeFilme = nameFilme;
+    }
+
+    public void setNomeDiretor(String nameDiretor) {
+        nomeDiretor = nameDiretor;
     }
 
     public void setAnoLancamento(String ano) {
         anoLancamento = ano;
+    }
+
+    public void setAnoNascimento(String ano) {
+        anoNascimento = ano;
     }
 }

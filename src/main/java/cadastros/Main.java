@@ -3,15 +3,16 @@ package cadastros;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
+//import buscagoogle.BuscaFilmesGoogle;
 
 public class Main {
 
     private Scanner l;
     private boolean executeCadastroFilmes;
-    private boolean executeCadastroDiretor;
     private boolean executePrincipal;
     private List<Filmes> cadastroFilmes;
-    private List<Diretores> cadastroDiretores;
+   // BuscaFilmesGoogle busca = new BuscaFilmesGoogle();
+
 
     public static void main(String[] args) {
         new Main();
@@ -20,12 +21,10 @@ public class Main {
     private Main() {
         l = new Scanner(System.in);
         executePrincipal = true;
-        executeCadastroDiretor = true;
         executeCadastroFilmes = true;
         cadastroFilmes = new ArrayList<Filmes>();
-        cadastroDiretores = new ArrayList<Diretores>();
 
-        System.out.println("*SISTEMA PARA CADASTRO DE FILMES E DIRETORES***\n");
+        System.out.println("*SISTEMA PARA CADASTRO DE FILMES***\n");
         while (executePrincipal) {
             String opcaoMenuPrincipal = menuPricipal();
 
@@ -43,20 +42,10 @@ public class Main {
                         System.out.println("\nOpção inválida!\n");
                     }
                 }
-            } else if (opcaoMenuPrincipal.equalsIgnoreCase("d")) {
-                while (executeCadastroDiretor) {
-                    String opcao = menuCadastroDiretor();
 
-                    if (opcao.equalsIgnoreCase("n")) {
-                        cadastrarDiretor();
-                    } else if (opcao.equalsIgnoreCase("l")) {
-                        listarCadastrosDiretores();
-                    } else if (opcao.equalsIgnoreCase("s")) {
-                        executeCadastroDiretor = false;
-                    } else {
-                        System.out.println("\nOpção inválida!\n");
-                    }
-                }
+            } else if (opcaoMenuPrincipal.equalsIgnoreCase("b")) {
+                System.out.println("\nBusca de Filmes e Diretores no Google\n");
+                System.out.println("\nSerá realizado uma busca de diretores e filmes cadastrados.\n");
 
             } else if (opcaoMenuPrincipal.equalsIgnoreCase("s")) {
                 executePrincipal = false;
@@ -64,17 +53,16 @@ public class Main {
             } else {
                 System.out.println("\nOpção inválida!\n");
             }
-
-
         }
 
 
     }
 
+
     private String menuPricipal() {
         System.out.println("Informe uma opção:");
         System.out.println("F - Cadastrar e listar Filmes");
-        System.out.println("D - Cadastrar e listar Diretores");
+        System.out.println("B - Buscar no goole resultados de diretor e filme");
         System.out.println("S - Sair");
         return l.nextLine();
 
@@ -88,22 +76,18 @@ public class Main {
         return l.nextLine();
     }
 
-    private String menuCadastroDiretor() {
-        System.out.println("Informe uma opção:");
-        System.out.println("N - Adicionar novo diretor ao cadastro");
-        System.out.println("L - Listar diretores cadastros");
-        System.out.println("S - Sair");
-        return l.nextLine();
-    }
-
     private void cadastrarFilme() {
         boolean cadastrando = true;
 
         while (cadastrando) {
             System.out.println("Cadastro de Filmes");
             Filmes cad = new Filmes();
-            cad.setNome(textInput("Nome do filme:"));
+
+            cad.setNomeFilme(textInput("Nome do filme:"));
             cad.setAnoLancamento(textInput("Ano Lançamento: "));
+
+            cad.setNomeDiretor(textInput("Nome do diretor:"));
+            cad.setAnoNascimento(textInput("Ano Nascimento: "));
 
             String cadastrar = textInput("Deseja adicionar o filme ao cadastro (S/N) ?");
             if (cadastrar.equalsIgnoreCase("s")) {
@@ -136,55 +120,10 @@ public class Main {
             for (int i = 0; i < cadastroFilmes.size(); i++) {
                 Filmes cad = cadastroFilmes.get(i);
                 System.out.println("Filme número: " + i);
-                System.out.println("\tNome: " + cad.getNome());
+                System.out.println("\tNome do Filme: " + cad.getNomeFilme());
                 System.out.println("\tAno de Lançamento: " + cad.getAnoLancamento());
-            }
-            System.out.println("\nFim da lista\n");
-        }
-    }
-
-    private void cadastrarDiretor() {
-        boolean cadastrando = true;
-
-        while (cadastrando) {
-            System.out.println("Cadastro de Diretores");
-            Diretores cad = new Diretores();
-            cad.setNome(textInput("Nome do Diretor:"));
-            cad.setAnoNascimeento(textInput("Ano de Nascimento: "));
-
-            String cadastrar = textInput("Deseja adicionar o diretor ao cadastro (S/N) ?");
-            if (cadastrar.equalsIgnoreCase("s")) {
-                System.out.println("Diretor cadastrado!");
-                cadastroDiretores.add(cad);
-            } else if (cadastrar.equalsIgnoreCase("n")) {
-                System.out.println("Cadastro cancelado !!!");
-            } else {
-                System.out.println("\nOpção inválida! \n");
-            }
-
-            String continua = textInput("Adicionar mais diretores? (S/N) ?");
-            if (continua.equalsIgnoreCase("N")) {
-                cadastrando = false;
-            } else if (continua.equalsIgnoreCase("s")) {
-                // se for s sai do if e volta para o inicio do while
-                cadastrando = true;
-            } else {
-                System.out.println("\nOpção inválida! \n");
-                cadastrando = false;
-            }
-        }
-    }
-
-    private void listarCadastrosDiretores() {
-        if (cadastroDiretores.size() == 0) {
-            System.out.println("\nNão existem diretores cadastrados !!!\n");
-        } else {
-            System.out.println("\nLista de diretores cadastrados\n");
-            for (int i = 0; i < cadastroDiretores.size(); i++) {
-                Diretores cad = cadastroDiretores.get(i);
-                System.out.println("Diretor número: " + i);
-                System.out.println("\tNome: " + cad.getNome());
-                System.out.println("\tAno de Nascimento: " + cad.getAnoNascimeento());
+                System.out.println("\tNome do Diretor: " + cad.getNomeDiretor());
+                System.out.println("\tAno de Nascimento: " + cad.getAnoNascimento());
             }
             System.out.println("\nFim da lista\n");
         }

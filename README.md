@@ -32,6 +32,10 @@ Nome do filme:
 
 Ano Lançamento: 
 
+Nome do Diretor: 
+
+Ano de Nascimento:
+
 Deseja adicionar o filme ao cadastro (S/N) ?
 
 * Caso não desejar adicionar o filme ao cadastro, ele será cancelado.
@@ -48,48 +52,6 @@ S - Sair
 
 Então, será exibido todos os filmes cadastrados, senão exibirá mensagem informando que não existe filme cadastrado.
 
-
-### Cadastro de Diretores
-
-Digite a opção D das opções para cadastro de Diretores:
-
-Informe uma opção:
-
-F - Cadastrar e listar Filmes
-
-D - Cadastrar e listar Diretores
-
-S - Sair
-
-Digite a opção N para cadastrar novo diretor
-
-N - Adicionar novo diretor ao cadastro
-
-L - Listar diretores cadastros
-
-S - Sair
-
-Informe:
-
-Nome do Diretor;
-
-Ano de Nascimento;
-
-Deseja adicionar o diretor ao cadastro (S/N) ?
-
-* Caso não desejar adicionar o diretor ao cadastro, ele será cancelado.
-
-### Lista de Diretores
-
-Em cadastro de Diretores informando D, deverá selecionar a opção L:
-
-N - Adicionar novo diretor ao cadastro
-
-L - Listar diretores cadastros
-
-S - Sair
-
-Então, será exibido todos os diretores cadastrados, senão exibirá mensagem informando que não existe diretor cadastrado.
 
 ### Sair do sistema
 
